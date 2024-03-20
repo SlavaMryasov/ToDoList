@@ -25,6 +25,7 @@ function App() {
 
 	const [filter, setFilter] = useState<FilterValuesType>('all')
 
+	//tasks
 	const removeTask = (taskId: string) => {
 		const filteredTasks = tasks.filter((task) => {
 			return task.id !== taskId
@@ -42,7 +43,18 @@ function App() {
 		setTasks(updatedState)
 	}
 
+	const changeTaskStatus = (taskId: string, newIsDoneValue: boolean) => {
+		// const task = tasks.find(t => t.id === taskId)
+		// if(task) {
+		// 	task.isDone === !task.isDone // мутируем таску - так не делать 
+		// 	setTasks([...tasks])
+		// }
 
+		const updatedState = tasks.map(task => task.id === taskId ? {...task, isDone: newIsDoneValue}: task)
+		setTasks(updatedState)
+	}
+
+	//filter
 	const changeFilter = (filter: FilterValuesType) => {
 		setFilter(filter)
 	}
@@ -63,7 +75,9 @@ function App() {
 			          tasks={tasksForTodolist}
 			          removeTask={removeTask}
 			          changeFilter={changeFilter}
-					  addTask={addTask}/>
+					  addTask={addTask}
+					  changeTaskStatus={changeTaskStatus}
+					  filter={filter}/>
 		</div>
 	);
 }

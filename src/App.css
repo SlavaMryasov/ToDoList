@@ -6,3 +6,20 @@
 .App > div {
   margin-right: 50px;
 }
+
+.task {
+  font-weight: 700;
+}
+
+.task-done {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+.activeButton {
+  border: 2px solid red
+}
+
+.input-error{
+  border: 2px solid red;
+}
